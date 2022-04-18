@@ -1,3 +1,4 @@
 *.pdf
 *.png
 knight's.py
+__pycache__
