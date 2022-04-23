@@ -1,7 +1,4 @@
-
 import time
-
-
 class knight_tour:
     def __init__(self,start=(0,0),N=5):
         self.size=N
@@ -24,7 +21,8 @@ class knight_tour:
                 self.solution[next_i][next_j]=step_count
                 if(self.knight_tour(next_i,next_j, step_count+1)):
                     return True
-                self.solution[next_i][next_j]= -1
+                #Backtracking if solution not found
+                self.solution[next_i][next_j]= -1 
         return False
     
     def is_valid(self,next_i, next_j):
@@ -35,7 +33,10 @@ class knight_tour:
     
     def start_tour(self):
         i,j=self.start
-        self.solution[i][j]=self.step_count
+        if i<=self.size-1 and j<=self.size-1:
+            self.solution[i][j]=self.step_count
+        else:
+            return False
         if(self.knight_tour(i,j,2)):
             for i in range(self.size):
                 print(self.solution[i])
